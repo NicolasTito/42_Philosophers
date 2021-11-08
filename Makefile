@@ -6,11 +6,11 @@
 #    By: nide-mel <nide-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:03:32 by nide-mel          #+#    #+#              #
-#    Updated: 2021/10/13 12:56:27 by nide-mel         ###   ########.fr        #
+#    Updated: 2021/11/08 20:05:51 by nide-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME =
 NAME_BONUS =
 
 CC = gcc
@@ -18,30 +18,34 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
 HEADER = ./includes/$(wildcard*.h)
-HEADER_BONUS = ./includes/$(wildcard*.h)
+HEADER_BONUS = ./inc_bonus/$(wildcard*.h)
 
-LIBFT = ./libft/libft.a
-LIBFT_PATH = ./libft
-
-INCLUDES = -I libft/includes -I ./includes
+INCLUDES = -I ./includes
+INC_BONUS = -I ./inc_bonus
 
 SRC_PATH = ./src
+SRC_PATH_BONUS = ./bonus
 
 OBJ_PATH = ./obj
+OBJ_PATH_BONUS = ./obj_bonus
 
-SRC_NAME = 
+SRC_NAME = main.c\
+			init_struct.c\
+
+SRC_NAME_BONUS =
 
 OBJ = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
+OBJ_BONUS = $(addprefix $(OBJ_PATH_BONUS)/, $(SRC_NAME_BONUS:.c=.o))
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
+SRC = $(addprefix $(SRC_PATH_BONUS)/, $(SRC_NAME_BONUS))
 
-all : $(NAME) $(NAME_BONUS)
+all : $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\x1b[32m"
 	@echo cat ./art/ok
-	@make -C $(LIBFT_PATH)
-	@$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) -o $(NAME)
 	@echo "[$(NAME) compiled]"
 	@echo "\x1b[0m"
 
@@ -49,8 +53,20 @@ $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	@mkdir -p obj
 	@$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
+bonus : $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ_BONUS)
+	@echo "\x1b[32m"
+	@echo cat ./art/ok
+	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(INC_BONUS) -o $(NAME_BONUS)
+	@echo "[$(NAME) compiled]"
+	@echo "\x1b[0m"
+
+$(OBJ_PATH_BONUS)/%.o : $(SRC_PATH_BONUS)/%.c
+	@mkdir -p obj_bonus
+	@$(CC) -c $(CFLAGS) $(INC_BONUS) $< -o $@
+
 clean:
-	@make clean -C $(LIBFT_PATH)
 	@rm -rf $(OBJ)
 	@rm -rf $(OBJB)
 	@echo ./art/clean
@@ -60,7 +76,6 @@ clean:
 	@echo "\033[0m"
 
 fclean: clean
-	@make fclean -C $(LIBFT_PATH)
 	@rm -f $(NAME) $(NAME_BONUS)
 	@echo ./art/fclean
 	@echo "\033[31m"
@@ -70,4 +85,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all, bonus, clean, fclean, re
