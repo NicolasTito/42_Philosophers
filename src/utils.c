@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nide-mel <nide-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 12:57:53 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 01:12:59 by nide-mel         ###   ########.fr       */
+/*   Created: 2021/11/08 20:57:28 by nide-mel          #+#    #+#             */
+/*   Updated: 2021/11/09 01:11:31 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	start_program(t_data *data)
+t_data	*get_data(t_data *data)
 {
+	static t_data	*s_data = NULL;
 
-}
-
-int	main(int ac, char **av)
-{
-	t_data	*data;
-
-	if (ac != 5 || ac != 6)
-	{
-		printf("!!!ARGUMENT ERROR💩!!!\n");
-		return (0);
-	}
-	data = init_struct(ac, av);
-	start_program(data);
-	return (0);
+	if (!s_data && data)
+		s_data = data;
+	return (s_data);
 }

@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nide-mel <nide-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 12:57:53 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 01:12:59 by nide-mel         ###   ########.fr       */
+/*   Created: 2021/02/13 14:48:06 by nide-mel          #+#    #+#             */
+/*   Updated: 2021/11/08 22:34:58 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	start_program(t_data *data)
+int	ft_atoi(const char *str)
 {
+	int			is_n;
+	long int	rest;
 
-}
-
-int	main(int ac, char **av)
-{
-	t_data	*data;
-
-	if (ac != 5 || ac != 6)
-	{
-		printf("!!!ARGUMENT ERROR💩!!!\n");
+	is_n = 1;
+	rest = 0;
+	if (*str == '0')
 		return (0);
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			is_n *= -1;
+		str++;
 	}
-	data = init_struct(ac, av);
-	start_program(data);
-	return (0);
+	while ('0' <= *str && *str <= '9')
+	{
+		rest = (rest * 10) + (*(str++) - '0');
+		if (rest > 2147483647)
+			return (-1);
+		if (rest < -2147483648)
+			return (0);
+	}
+	return (rest * is_n);
 }
