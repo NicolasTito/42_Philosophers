@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nide-mel <nide-mel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 01:08:08 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/09 20:31:15 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	init_philos(t_philo *s_philo, char **av, int ac)
 	s_philo->kill = 0;
 }
 
-t_data	*init_struct(int ac, char **av)
+void	init_struct(int ac, char **av)
 {
 	t_data *data;
 
 	init_philos(&data->s_philo, av, ac);
-	data = get_data(data);
+	get_data(data);
 	return (data);
 }

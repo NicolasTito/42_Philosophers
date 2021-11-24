@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_functions.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nide-mel <nide-mel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:09:49 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 01:07:34 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/09 20:31:30 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 t_data	*get_data(t_data *data);
 int		ft_atoi(const char *str);
 void	init_philos(t_philo *s_philo, char **av, int ac);
-t_data	*init_struct(int ac, char **av);
+void	init_struct(int ac, char **av);
 
 #endif
