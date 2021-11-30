@@ -6,13 +6,12 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 16:40:29 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 20:16:30 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/30 22:58:35 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-//qualquer
 long	get_time(t_time *start)
 {
 	t_time	s_time;

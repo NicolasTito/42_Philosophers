@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:48 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 21:01:59 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/30 23:11:24 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ typedef struct s_philo
 	int			id;
 	long		start_eat;
 	long		start_sleep;
+	long		start_think;
 	int			status;
-	t_bool		*l_fork;
-	t_bool		*r_fork;
+	bool		*l_fork;
+	bool		*r_fork;
 }				t_philo;
 
 typedef struct s_data
@@ -42,7 +43,7 @@ typedef struct s_data
 	t_arg		s_arg;
 	t_time		start;
 	t_philo		*philo;
-	t_bool		*forks;
+	bool		*forks;
 }						t_data;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:59 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 19:49:52 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/30 22:47:24 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <limits.h>
+# include <stdbool.h>
 # include "p_struct.h"
 # include "philo_functions.h"
 # include "enums.h"

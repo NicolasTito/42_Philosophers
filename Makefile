@@ -6,11 +6,11 @@
 #    By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:03:32 by nide-mel          #+#    #+#              #
-#    Updated: 2021/11/30 20:12:23 by nide-mel         ###   ########.fr        #
+#    Updated: 2021/11/30 23:16:34 by nide-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =
+NAME = philo
 NAME_BONUS =
 
 CC = gcc
@@ -29,11 +29,11 @@ SRC_PATH_BONUS = ./bonus
 OBJ_PATH = ./obj
 OBJ_PATH_BONUS = ./obj_bonus
 
-SRC_NAME = main.c\
+SRC_NAME = 	main.c\
 			init_struct.c\
 			utils.c\
 			ft_time.c\
-			lib_funct/libft.\
+			lib_funct/libft.c\
 
 SRC_NAME_BONUS =
 
@@ -47,13 +47,14 @@ all : $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\x1b[32m"
-	@echo cat ./art/ok
+	@cat ./art/ok
 	@$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) -o $(NAME)
 	@echo "[$(NAME) compiled]"
 	@echo "\x1b[0m"
 
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	@mkdir -p obj
+	@mkdir -p obj/lib_funct
 	@$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
 bonus : $(NAME_BONUS)
@@ -62,7 +63,7 @@ $(NAME_BONUS): $(OBJ_BONUS)
 	@echo "\x1b[32m"
 	@echo cat ./art/ok
 	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(INC_BONUS) -o $(NAME_BONUS)
-	@echo "[$(NAME) compiled]"
+	@echo "[bonuscompiled]"
 	@echo "\x1b[0m"
 
 $(OBJ_PATH_BONUS)/%.o : $(SRC_PATH_BONUS)/%.c
@@ -75,7 +76,7 @@ clean:
 	@echo ./art/clean
 	@echo "\033[33m"
 	@cat ./art/clean
-	@echo "all $(NAME) and $(NAME_BONUS) .o files are removed"
+	@echo "all $(NAME) and bonus.o files are removed"
 	@echo "\033[0m"
 
 fclean: clean
@@ -83,8 +84,8 @@ fclean: clean
 	@echo ./art/fclean
 	@echo "\033[31m"
 	@cat ./art/fclean
-	@echo "$(NAME) and $(NAME_BONUS) is deleted"
-	@echo"\033[0m"
+	@echo "$(NAME) and bonus is deleted"
+	@echo "\033[0m"
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 22:37:58 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/30 23:12:20 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ void	init_philo(t_data *data, int id)
 {
 	data->philo[id].id = id + 1;
 	data->philo[id].start_eat = 0;
-	data->philo[id].start_sleep = get_time;
-	data->philo[id].status = sleep;
+	data->philo[id].start_sleep = 0;
+	data->philo[id].start_think = 0;
+	data->philo[id].status = sleeping;
 	if (data->philo[id].id == data->s_arg.nb_philo)
-		data->philo[id].r_fork = data->forks[0];
+		data->philo[id].r_fork = &data->forks[0];
 	else
-		data->philo[id].r_fork = data->forks[id + 1];
-	data->philo[id].l_fork = data->forks[id];
+		data->philo[id].r_fork = &data->forks[id + 1];
+	data->philo[id].l_fork = &data->forks[id];
 }
 
 void	init_args(t_arg *s_philo, char **av, int ac)
@@ -38,28 +39,28 @@ void	init_args(t_arg *s_philo, char **av, int ac)
 	s_philo->kill = 0;
 }
 
-t_bool	init_data(t_data *data)
+bool	init_data(t_data *data)
 {	int		i;
 
 	i = -1;
-	gettimeofday(&data->start, NULL);
 	data->philo = calloc(data->s_arg.nb_philo, sizeof(t_philo));
 	data->forks = calloc(data->s_arg.nb_philo, sizeof(t_philo));
 	if (!data->forks || !data->philo)
-		return (falso);
+		return (false);
 	while (++i < data->s_arg.nb_philo)
 	{
-		data->forks[i] = verdade;
-		init_philo(&data->philo[i], i);
+		data->forks[i] = true;
+		init_philo(data, i);
 	}
-	return (verdade);
+	return (true);
 }
 
 t_data	*init_struct(int ac, char **av)
 {
-	t_data	*data;
+	t_data	*data = NULL;
 
 	init_args(&data->s_arg, av, ac);
+	gettimeofday(&data->start, NULL);
 	if (data->s_arg.nb_philo == 1)
 	{
 		usleep(data->s_arg.t_die * 1000);
