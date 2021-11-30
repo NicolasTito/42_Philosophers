@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_functions.h                                  :+:      :+:    :+:   */
+/*   ft_time.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 22:09:49 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 19:09:18 by nide-mel         ###   ########.fr       */
+/*   Created: 2021/11/30 16:40:29 by nide-mel          #+#    #+#             */
+/*   Updated: 2021/11/30 19:08:55 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_FUNCTIONS_H
-# define PHILO_FUNCTIONS_H
+#include "philo.h"
 
-# include "philo.h"
+long	get_time(t_time *start) {
+	t_time s_time;
 
-t_data	*get_data(t_data *data);
-int		ft_atoi(const char *str);
-void	init_philos(t_arg *s_philo, char **av, int ac);
-void	init_struct(int ac, char **av);
-long	get_time(t_time *start);
-
-#endif
+	gettimeofday(&s_time, NULL);
+	return (((s_time.tv_sec - start->tv_sec) * 1000) \
+	+ ((s_time.tv_usec - start->tv_usec) / 1000));
+}

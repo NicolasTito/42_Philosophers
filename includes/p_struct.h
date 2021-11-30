@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_struct.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nide-mel <nide-mel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:48 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 01:11:18 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:29:41 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "philo.h"
 
-typedef struct s_philo
+typedef struct timeval	t_time;
+typedef struct s_arg
 {
 	int			nb_philo;
 	int			t_die;
@@ -23,12 +24,19 @@ typedef struct s_philo
 	int			t_sleep;
 	int			times_eat;
 	int			kill;
+}						t_arg;
+
+typedef struct s_philo
+{
+	int			id;
+	long		start_eat;
+	long		start_sleep;
 }				t_philo;
 
 typedef struct s_data
 {
-	t_philo			s_philo;
-	struct timeval	start_eat;
-}					t_data;
+	t_arg		s_arg;
+	t_time		start;
+}						t_data;
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 20:31:15 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:07:29 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	init_philos(t_philo *s_philo, char **av, int ac)
+void	init_philos(t_arg *s_philo, char **av, int ac)
 {
 	s_philo->nb_philo = ft_atoi(av[2]);
 	s_philo->t_die = ft_atoi(av[3]);
@@ -29,7 +29,8 @@ void	init_struct(int ac, char **av)
 {
 	t_data *data;
 
-	init_philos(&data->s_philo, av, ac);
+	gettimeofday(&data->start, NULL);
+	init_philos(&data->s_arg, av, ac);
 	get_data(data);
 	return (data);
 }
