@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:59 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 21:05:15 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:49:52 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <limits.h>
 # include "p_struct.h"
 # include "philo_functions.h"
+# include "enums.h"
 # include "ansi_colors.h"
 
 #endif

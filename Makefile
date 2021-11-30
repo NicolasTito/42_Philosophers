@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nide-mel <nide-mel@student.42.fr>          +#+  +:+       +#+         #
+#    By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:03:32 by nide-mel          #+#    #+#              #
-#    Updated: 2021/11/09 01:11:59 by nide-mel         ###   ########.fr        #
+#    Updated: 2021/11/30 20:12:23 by nide-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,9 @@ OBJ_PATH_BONUS = ./obj_bonus
 
 SRC_NAME = main.c\
 			init_struct.c\
-			utils.h\
-			lib_funct/ft_atoi.\
+			utils.c\
+			ft_time.c\
+			lib_funct/libft.\
 
 SRC_NAME_BONUS =
 

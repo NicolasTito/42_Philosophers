@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_time.h                                          :+:      :+:    :+:   */
+/*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 16:40:29 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 19:08:55 by nide-mel         ###   ########.fr       */
+/*   Created: 2021/11/30 20:06:12 by nide-mel          #+#    #+#             */
+/*   Updated: 2021/11/30 20:06:42 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef ENUMS_H
+# define ENUMS_H
 
-long	get_time(t_time *start) {
-	t_time s_time;
+# include "philo.h"
 
-	gettimeofday(&s_time, NULL);
-	return (((s_time.tv_sec - start->tv_sec) * 1000) \
-	+ ((s_time.tv_usec - start->tv_usec) / 1000));
-}
+typedef enum s_bool
+{
+	falso = 0,
+	verdade = 1,
+}			t_bool;
+
+typedef enum s_status
+{
+	dead = 0,
+	sleeping = 1,
+	eating = 2,
+}			t_status;
+#endif

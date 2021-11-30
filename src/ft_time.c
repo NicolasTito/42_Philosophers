@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 12:57:53 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 22:34:30 by nide-mel         ###   ########.fr       */
+/*   Created: 2021/11/30 16:40:29 by nide-mel          #+#    #+#             */
+/*   Updated: 2021/11/30 20:16:30 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	start_thread(t_data *data)
+//qualquer
+long	get_time(t_time *start)
 {
-	int	i;
+	t_time	s_time;
 
-	i = -1;
-}
-
-void	start_program(int ac, char **av)
-{
-	t_data	*s_data;
-
-	s_data = init_struct(ac, av);
-	if (!s_data)
-		return ;
-	start_thread(s_data);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 5 && ac != 6)
-	{
-		printf(RED "!!!ARGUMENT ERROR💩!!!\n" RST);
-		return (0);
-	}
-	start_program(ac, av);
-	return (0);
+	gettimeofday(&s_time, NULL);
+	return (((s_time.tv_sec - start->tv_sec) * 1000) \
+	+ ((s_time.tv_usec - start->tv_usec) / 1000));
 }
