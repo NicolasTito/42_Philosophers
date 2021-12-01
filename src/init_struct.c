@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 14:14:20 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 23:43:05 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,14 @@ void	init_philo(t_data *data, int id)
 
 void	init_args(t_arg *s_philo, char **av, int ac)
 {
-	s_philo->nb_philo = ft_atoi(av[2]);
-	s_philo->t_die = ft_atoi(av[3]);
-	s_philo->t_eat = ft_atoi(av[4]);
-	s_philo->t_sleep = ft_atoi(av[5]);
+	s_philo->nb_philo = ft_atoi(av[1]);
+	s_philo->t_die = ft_atoi(av[2]);
+	s_philo->t_eat = ft_atoi(av[3]);
+	s_philo->t_sleep = ft_atoi(av[4]);
 	if (ac == 6)
-		s_philo->times_eat = ft_atoi(av[6]);
+		s_philo->times_eat = ft_atoi(av[5]);
 	else
 		s_philo->times_eat = -1;
-	s_philo->kill = 0;
 }
 
 bool	init_data(t_data *data)
@@ -52,6 +51,7 @@ bool	init_data(t_data *data)
 	int	i;
 
 	i = -1;
+	data->kill = 0;
 	data->philo = calloc(data->s_arg.nb_philo, sizeof(t_philo));
 	data->forks = calloc(data->s_arg.nb_philo, sizeof(t_philo));
 	data->mutex = calloc(data->s_arg.nb_philo, sizeof(pthread_mutex_t));
@@ -71,7 +71,7 @@ t_data	*init_struct(int ac, char **av)
 {
 	t_data	*data;
 
-	data = NULL;
+	data = malloc(sizeof(t_data));
 	init_args(&data->s_arg, av, ac);
 	gettimeofday(&data->start, NULL);
 	if (data->s_arg.nb_philo == 1)

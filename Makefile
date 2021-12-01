@@ -6,7 +6,7 @@
 #    By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:03:32 by nide-mel          #+#    #+#              #
-#    Updated: 2021/12/01 11:01:21 by nide-mel         ###   ########.fr        #
+#    Updated: 2021/12/01 23:20:12 by nide-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 NAME_BONUS =
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 RM = rm -f
 
 HEADER = ./includes/$(wildcard*.h)
@@ -34,6 +34,7 @@ SRC_NAME = 	main.c\
 			utils.c\
 			ft_time.c\
 			ft_thread.c\
+			states.c\
 			lib_funct/libft.c\
 
 SRC_NAME_BONUS =

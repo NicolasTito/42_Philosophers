@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:48 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 14:13:57 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 23:15:51 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_arg
 	int			t_eat;
 	int			t_sleep;
 	int			times_eat;
-	int			kill;
 }				t_arg;
 
 typedef struct s_philo
@@ -39,11 +38,12 @@ typedef struct s_philo
 	bool			*r_fork;
 	pthread_mutex_t	*l_mutex;
 	pthread_mutex_t	*r_mutex;
-	pthread_t		*pthread;
+	pthread_t		pthread;
 }				t_philo;
 
 typedef struct s_data
 {
+	int				kill;
 	t_arg			s_arg;
 	t_time			start;
 	t_philo			*philo;
