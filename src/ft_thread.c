@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enums.h                                            :+:      :+:    :+:   */
+/*   ft_thread.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 20:06:12 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 10:53:37 by nide-mel         ###   ########.fr       */
+/*   Created: 2021/12/01 11:01:32 by nide-mel          #+#    #+#             */
+/*   Updated: 2021/12/01 11:02:25 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENUMS_H
-# define ENUMS_H
+#include "philo.h"
 
-# include "philo.h"
-
-typedef enum s_status
+void	*start_routine(t_data *data)
 {
-	dead = 0,
-	sleeping = 1,
-	eating = 2,
-}			t_status;
-#endif
+	
+}

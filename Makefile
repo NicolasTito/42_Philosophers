@@ -6,7 +6,7 @@
 #    By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:03:32 by nide-mel          #+#    #+#              #
-#    Updated: 2021/11/30 23:16:34 by nide-mel         ###   ########.fr        #
+#    Updated: 2021/12/01 11:01:21 by nide-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC_NAME = 	main.c\
 			init_struct.c\
 			utils.c\
 			ft_time.c\
+			ft_thread.c\
 			lib_funct/libft.c\
 
 SRC_NAME_BONUS =

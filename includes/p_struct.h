@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:48 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 23:11:24 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 10:58:49 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_philo
 	int			status;
 	bool		*l_fork;
 	bool		*r_fork;
+	pthread_t	*pthread;
 }				t_philo;
 
 typedef struct s_data

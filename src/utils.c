@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nide-mel <nide-mel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 20:57:28 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 01:11:31 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 11:09:39 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,10 @@ t_data	*get_data(t_data *data)
 	if (!s_data && data)
 		s_data = data;
 	return (s_data);
+}
+
+void	free_struct(t_data *data)
+{
+	free(data->philo);
+	free(data->forks);
 }

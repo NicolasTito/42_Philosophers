@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/30 23:12:20 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 10:54:41 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	init_args(t_arg *s_philo, char **av, int ac)
 }
 
 bool	init_data(t_data *data)
-{	int		i;
+{
+	int	i;
 
 	i = -1;
 	data->philo = calloc(data->s_arg.nb_philo, sizeof(t_philo));
@@ -57,8 +58,9 @@ bool	init_data(t_data *data)
 
 t_data	*init_struct(int ac, char **av)
 {
-	t_data	*data = NULL;
+	t_data	*data;
 
+	data = NULL;
 	init_args(&data->s_arg, av, ac);
 	gettimeofday(&data->start, NULL);
 	if (data->s_arg.nb_philo == 1)
