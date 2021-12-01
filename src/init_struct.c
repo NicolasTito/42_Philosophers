@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 10:54:41 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 12:32:28 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,17 @@ void	init_philo(t_data *data, int id)
 	data->philo[id].start_think = 0;
 	data->philo[id].status = sleeping;
 	if (data->philo[id].id == data->s_arg.nb_philo)
+	{
 		data->philo[id].r_fork = &data->forks[0];
+		data->philo[id].r_mutex = &data->mutex[0];
+	}
 	else
+	{
 		data->philo[id].r_fork = &data->forks[id + 1];
+		data->philo[id].r_mutex = &data->mutex[id + 1];
+	}
 	data->philo[id].l_fork = &data->forks[id];
+	data->philo[id].l_mutex = &data->mutex[id];
 }
 
 void	init_args(t_arg *s_philo, char **av, int ac)
@@ -46,11 +53,14 @@ bool	init_data(t_data *data)
 	i = -1;
 	data->philo = calloc(data->s_arg.nb_philo, sizeof(t_philo));
 	data->forks = calloc(data->s_arg.nb_philo, sizeof(t_philo));
-	if (!data->forks || !data->philo)
+	data->mutex = calloc(data->s_arg.nb_philo, sizeof(pthread_mutex_t));
+	if (!data->forks || !data->philo || !data->mutex)
 		return (false);
 	while (++i < data->s_arg.nb_philo)
 	{
 		data->forks[i] = true;
+		if (pthread_mutex_init(&data->mutex[i], NULL) != 0)
+			return (false);
 		init_philo(data, i);
 	}
 	return (true);
