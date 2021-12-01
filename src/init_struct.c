@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 12:32:28 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:14:20 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	init_philo(t_data *data, int id)
 	data->philo[id].start_eat = 0;
 	data->philo[id].start_sleep = 0;
 	data->philo[id].start_think = 0;
-	data->philo[id].status = sleeping;
+	data->philo[id].status = thinking;
+	data->philo[id].count_eat = 0;
 	if (data->philo[id].id == data->s_arg.nb_philo)
 	{
 		data->philo[id].r_fork = &data->forks[0];

@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:48 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 12:26:50 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:13:57 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_philo
 	long			start_eat;
 	long			start_sleep;
 	long			start_think;
+	int				count_eat;
 	int				status;
 	bool			*l_fork;
 	bool			*r_fork;

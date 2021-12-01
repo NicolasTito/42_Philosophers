@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:09:49 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 11:06:25 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:18:31 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void	init_args(t_arg *s_philo, char **av, int ac);
 t_data	*init_struct(int ac, char **av);
 void	init_philo(t_data *data, int id);
 long	get_time(t_time *start);
-void	*start_routine(t_data *data);
+void	*routine(void *data);
 void	*ft_calloc(size_t count, size_t size);
 void	free_struct(t_data *data);
+bool	time_eat_dead(t_philo *philo);
 
 #endif
