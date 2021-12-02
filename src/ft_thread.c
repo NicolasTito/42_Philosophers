@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:01:32 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/02 01:47:24 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/02 02:21:34 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	start_eating(t_philo *philo)
 		pthread_mutex_lock(philo->r_mutex);
 		philo->r_fork = false;
 		philo->l_fork = false;
+		philo->status = eating;
 		philo->start_eat = get_time();
 		printf(PRE BLU MSG_FORK RST, get_time(), philo->id);
 		printf(PRE BLU MSG_FORK RST, get_time(), philo->id);
 		printf(PRE GRN MSG_EAT RST, get_time(), philo->id);
 		ft_usleep(philo, philo->start_eat, data->s_arg.t_eat);
-		philo->count_eat++;
 		philo->r_fork = (bool *)true;
 		philo->l_fork = (bool *)true;
 		pthread_mutex_unlock(philo->l_mutex);
@@ -46,6 +46,7 @@ void	start_sleep(t_philo *philo)
 	philo->status = sleeping;
 	printf(PRE CYN MSG_SLEEP RST, get_time(), philo->id);
 	ft_usleep(philo, philo->start_sleep, data->s_arg.t_sleep);
+	philo->count_eat++;
 }
 
 void	start_thik(t_philo *philo)
