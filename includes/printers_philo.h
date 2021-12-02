@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_time.c                                          :+:      :+:    :+:   */
+/*   printers_philo.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 16:40:29 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/02 00:24:00 by nide-mel         ###   ########.fr       */
+/*   Created: 2021/12/02 01:21:01 by nide-mel          #+#    #+#             */
+/*   Updated: 2021/12/02 01:21:24 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef PRINTERS_PHILO_H
+# define PRINTERS_PHILO_H
 
-long	get_time(void)
-{
-	t_data	*data;
-	t_time	s_time;
-	t_time	*start;
+# define PRE "%ld %d"
+# define MSG_FORK " has taken a fork\n"
+# define MSG_EAT " is eating\n"
+# define MSG_SLEEP " is sleeping\n"
+# define MSG_THINK " is thinking\n"
+# define MSG_DEAD " died\n"
 
-	data = get_data(NULL);
-	start = &data->start;
-	gettimeofday(&s_time, NULL);
-	return (((s_time.tv_sec - start->tv_sec) * 1000) \
-	+ ((s_time.tv_usec - start->tv_usec) / 1000));
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 23:43:05 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/02 00:25:42 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,16 @@ t_data	*init_struct(int ac, char **av)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
+	get_data(data);
 	init_args(&data->s_arg, av, ac);
 	gettimeofday(&data->start, NULL);
 	if (data->s_arg.nb_philo == 1)
 	{
 		usleep(data->s_arg.t_die * 1000);
-		printf(RED "%ld %d died" RST, get_time(&data->start), 1);
+		printf(RED "%ld %d died" RST, get_time(), 1);
 		return (NULL);
 	}
 	if (!init_data(data))
 		return (NULL);
-	get_data(data);
 	return (data);
 }

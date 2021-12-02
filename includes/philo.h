@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:59 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 10:53:33 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/02 01:02:45 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # include "philo_functions.h"
 # include "enums.h"
 # include "ansi_colors.h"
+# include "printers_philo.h"
 
 #endif
