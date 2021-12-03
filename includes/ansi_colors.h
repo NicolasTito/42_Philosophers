@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:53:26 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/11/09 21:03:47 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:24:19 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,5 @@
 //Reset
 # define RST "\e[0m"
 
-#endif // !ANSI_COLORS_H
+// !ANSI_COLORS_H
+#endif

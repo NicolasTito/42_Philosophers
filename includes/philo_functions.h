@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:09:49 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/02 01:13:11 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:11:43 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*routine(void *data);
 void	*ft_calloc(size_t count, size_t size);
 void	free_struct(t_data *data);
 bool	time_eat_dead(t_philo *philo);
-void	philo_is_dead(t_philo *philo);
+bool	philo_is_dead(t_philo *philo);
 void	ft_usleep(t_philo *philo, long start, long sleep);
 
 #endif

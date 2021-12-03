@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:01:32 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/02 02:21:34 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:23:43 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	start_eating(t_philo *philo)
 	t_data	*data;
 
 	data = get_data(NULL);
-	philo_is_dead(philo);
-	if (philo->r_fork && philo->l_fork && philo->status != dead)
+	if (philo->r_fork && philo->l_fork && !philo_is_dead(philo))
 	{
 		pthread_mutex_lock(philo->l_mutex);
 		pthread_mutex_lock(philo->r_mutex);
+		if (philo_is_dead(philo))
+			return ;
 		philo->r_fork = false;
 		philo->l_fork = false;
 		philo->status = eating;
@@ -41,19 +42,29 @@ void	start_sleep(t_philo *philo)
 {
 	t_data	*data;
 
-	data = get_data(NULL);
-	philo->start_sleep = get_time();
-	philo->status = sleeping;
-	printf(PRE CYN MSG_SLEEP RST, get_time(), philo->id);
-	ft_usleep(philo, philo->start_sleep, data->s_arg.t_sleep);
-	philo->count_eat++;
+	if (philo_is_dead(philo))
+		return ;
+	else
+	{
+		data = get_data(NULL);
+		philo->start_sleep = get_time();
+		philo->status = sleeping;
+		printf(PRE CYN MSG_SLEEP RST, get_time(), philo->id);
+		ft_usleep(philo, philo->start_sleep, data->s_arg.t_sleep);
+		philo->count_eat++;
+	}
 }
 
 void	start_thik(t_philo *philo)
 {
-	philo->start_think = get_time();
-	philo->status = thinking;
-	printf(PRE YEL MSG_THINK RST, get_time(), philo->id);
+	if (philo_is_dead(philo))
+		return ;
+	else
+	{
+		philo->start_think = get_time();
+		philo->status = thinking;
+		printf(PRE YEL MSG_THINK RST, get_time(), philo->id);
+	}
 }
 
 void	*routine(void *arg)
@@ -63,12 +74,13 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	while (philo->status != dead)
 	{
-		philo_is_dead(philo);
-		if (philo->status == thinking)
+		if (philo_is_dead(philo))
+			return (NULL);
+		else if (philo->status == thinking && !philo_is_dead(philo))
 			start_eating(philo);
-		else if (philo->status == sleeping)
+		else if (philo->status == sleeping && !philo_is_dead(philo))
 			start_thik(philo);
-		else if (philo->status == eating)
+		else if (philo->status == eating && !philo_is_dead(philo))
 			start_sleep(philo);
 		if (time_eat_dead(philo))
 			return (NULL);
