@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 12:57:53 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 23:41:34 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/04 16:17:18 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	start_thread(t_data *data)
 	int	i;
 
 	i = -1;
-	printf("%d\n", data->s_arg.nb_philo);
 	while (++i < data->s_arg.nb_philo)
 		pthread_create(&data->philo[i].pthread, NULL, routine, &data->philo[i]);
 	i = -1;

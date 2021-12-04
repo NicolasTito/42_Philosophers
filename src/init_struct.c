@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:54:08 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/03 09:42:51 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/04 18:27:03 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ bool	init_data(t_data *data)
 			return (false);
 		init_philo(data, i);
 	}
+	if (pthread_mutex_init(&data->print, NULL) != 0)
+		return (false);
 	return (true);
 }
 
@@ -74,6 +76,12 @@ t_data	*init_struct(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	get_data(data);
 	init_args(&data->s_arg, av, ac);
+	if (data->s_arg.nb_philo < 0 || data->s_arg.t_die < 0
+		|| data->s_arg.t_eat < 0 || data->s_arg.t_die < 0)
+	{
+		printf(RED "Invalid argument" RST);
+		return (NULL);
+	}
 	gettimeofday(&data->start, NULL);
 	if (data->s_arg.nb_philo == 1)
 	{

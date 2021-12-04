@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 20:57:28 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/03 11:22:33 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/04 17:08:50 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ bool	philo_is_dead(t_philo *philo)
 	if ((get_time() - philo->start_eat) >= data->s_arg.t_die && data->kill == 0)
 	{
 		philo->status = dead;
+		pthread_mutex_lock(&data->print);
+		if (data->kill == 0)
+			printf(PRE RED MSG_DEAD RST, get_time(), philo->id);
 		data->kill = 1;
-		printf(PRE RED MSG_DEAD RST, get_time(), philo->id);
+		pthread_mutex_unlock(&data->print);
 		return (true);
 	}
 	if (data->kill == 1)

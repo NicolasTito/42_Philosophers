@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:10:48 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/01 23:15:51 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/04 17:04:14 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_data
 	t_philo			*philo;
 	bool			*forks;
 	pthread_mutex_t	*mutex;
+	pthread_mutex_t	print;
 }				t_data;
 
 #endif

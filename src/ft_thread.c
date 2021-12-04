@@ -6,7 +6,7 @@
 /*   By: nide-mel <nide-mel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:01:32 by nide-mel          #+#    #+#             */
-/*   Updated: 2021/12/03 11:23:43 by nide-mel         ###   ########.fr       */
+/*   Updated: 2021/12/04 16:58:29 by nide-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,19 @@ void	start_eating(t_philo *philo)
 	{
 		pthread_mutex_lock(philo->l_mutex);
 		pthread_mutex_lock(philo->r_mutex);
-		if (philo_is_dead(philo))
-			return ;
-		philo->r_fork = false;
-		philo->l_fork = false;
-		philo->status = eating;
-		philo->start_eat = get_time();
-		printf(PRE BLU MSG_FORK RST, get_time(), philo->id);
-		printf(PRE BLU MSG_FORK RST, get_time(), philo->id);
-		printf(PRE GRN MSG_EAT RST, get_time(), philo->id);
-		ft_usleep(philo, philo->start_eat, data->s_arg.t_eat);
-		philo->r_fork = (bool *)true;
-		philo->l_fork = (bool *)true;
+		if (!philo_is_dead(philo))
+		{
+			philo->r_fork = false;
+			philo->l_fork = false;
+			philo->status = eating;
+			philo->start_eat = get_time();
+			printf(PRE BLU MSG_FORK RST, get_time(), philo->id);
+			printf(PRE BLU MSG_FORK RST, get_time(), philo->id);
+			printf(PRE GRN MSG_EAT RST, get_time(), philo->id);
+			ft_usleep(philo, philo->start_eat, data->s_arg.t_eat);
+			philo->r_fork = (bool *)true;
+			philo->l_fork = (bool *)true;
+		}
 		pthread_mutex_unlock(philo->l_mutex);
 		pthread_mutex_unlock(philo->r_mutex);
 	}
@@ -70,8 +71,10 @@ void	start_thik(t_philo *philo)
 void	*routine(void *arg)
 {
 	t_philo	*philo;
+	t_data	*data;
 
 	philo = (t_philo *)arg;
+	data = get_data(NULL);
 	while (philo->status != dead)
 	{
 		if (philo_is_dead(philo))
